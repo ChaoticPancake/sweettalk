@@ -38,6 +38,18 @@ class LoginCustomerForm(Form):
 
 class CreateSupportForm(Form):
 
+      def __init__(
+              self,
+              formdata=None,
+              obj=None,
+              prefix="",
+              data=None,
+              meta=None,
+              **kwargs,
+      ):
+            super().__init__(formdata, obj, prefix, data, meta, kwargs)
+            self.order_id = None
+
       name = StringField('Name', [validators.Length(min=1, max=50), validators.DataRequired()])
       email = StringField('Email', [validators.Length(min=1, max=150), validators.DataRequired()])
       outlet = StringField('Outlet ordered from', [validators.Length(min=1, max=50), validators.Optional()])

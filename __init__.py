@@ -326,7 +326,7 @@ def create_support():
                                      create_support_form.order_id.data, create_support_form.subject.data,
                                     create_support_form.enquiry.data,)
 
-        support_dict[supp.get_()] = supp
+        support_dict[Support.get_count_id()] = supp
         db['Support'] = support_dict
 
         db.close()

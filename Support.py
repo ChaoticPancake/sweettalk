@@ -1,4 +1,5 @@
 class Support:
+    count_id = 0
     count_support=0
     def __init__(self,name,email,outlet, platform, order_id, subject, enquiry):
         super().__init__(name,email,order_id,outlet,platform,enquiry)
@@ -54,3 +55,7 @@ class Support:
 
     def set_enquiry(self, enquiry):
         self.__enquiry = enquiry
+
+
+def get_count_id():
+    Support.count_id+=1
