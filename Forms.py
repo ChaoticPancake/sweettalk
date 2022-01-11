@@ -19,6 +19,7 @@ from wtforms import EmailField, DateField
 #     address = TextAreaField('Mailing Address', [validators.length(max=200), validators.DataRequired()])
 #     membership = RadioField('Membership', choices=[('F', 'Fellow'), ('S', 'Senior'), ('P', 'Professional')], default='F')
 #     remarks = TextAreaField('Remarks', [validators.Optional()])
+
 class CreateCustomerForm(Form):
       first_name = StringField('First Name', [validators.Length(min=1, max=150), validators.DataRequired()])
       last_name = StringField('Last Name', [validators.Length(min=1, max=150), validators.DataRequired()])
@@ -33,3 +34,14 @@ class LoginCustomerForm(Form):
       username = StringField('Username', [validators.Length(min=1, max=15), validators.DataRequired()])
       # password = hashlib.md5('Password')
       password= StringField('Password', [validators.Length(min=1, max=15), validators.DataRequired()])
+
+
+class CreateSupportForm(Form):
+
+      name = StringField('Name', [validators.Length(min=1, max=50), validators.DataRequired()])
+      email = StringField('Email', [validators.Length(min=1, max=150), validators.DataRequired()])
+      outlet = StringField('Outlet ordered from', [validators.Length(min=1, max=50), validators.Optional()])
+      platform = StringField('Platform ordered from', [validators.length(min=1, max=50), validators.Optional()])
+      id = StringField('Order ID', [validators.Length(min=1, max=15), validators.Optional()])
+      subject= StringField('Subject', [validators.Length(min=1, max=15), validators.DataRequired()])
+      enquiry= TextAreaField('Enquiry', [validators.Length(max=1000), validators.DataRequired()])

@@ -1,6 +1,6 @@
 from flask import Flask,render_template,request, redirect, url_for
-from Forms import *
-import shelve,Customer,Account
+from Forms import CreateCustomerForm, CreateSupportForm
+import shelve,Customer,Account,Support
 app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
@@ -326,7 +326,7 @@ def create_support():
                                      create_support_form.order_id.data, create_support_form.subject.data,
                                     create_support_form.enquiry.data,)
 
-        support_dict[supp.get_supp.data()] = supp
+        support_dict[supp.get_()] = supp
         db['Support'] = support_dict
 
         db.close()
