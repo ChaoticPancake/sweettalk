@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Library Loan System - Create Support{% endblock %}
+
+{% block content %}
+{% from "includes/_formHelper.html" import render_field %}
+
+<h1 class="display-4">Create Support</h1>
+
+<form method="POST" action="">
+  <div class="form-group">
+    {{ render_field(form.name, class="form-control") }}
+  </div>
+  <div class="form-group">
+    {{ render_field(form.email, class="form-control") }}
+  </div>
+  <div class="form-group">
+    {{ render_field(form.outlet, class="form-control") }}
+  </div>
+  <div class="form-group">
+    {{ render_field(form.platform, class="form-control") }}
+  </div>
+    <div class="form-group">
+    {{ render_field(form.order_id, class="form-control") }}
+  </div>
+  <div id="prof">
+    <div class="form-group">
+      {{ render_field(form.subject, class="form-control") }}
+    </div>
+    <div class="form-group">
+      {{ render_field(form.enquiry, class="form-control") }}
+    </div>
+  </div>
+  <input type="submit" value="Submit" class="btn btn-primary"/>
+</form>
+{% endblock %}

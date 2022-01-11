@@ -309,6 +309,30 @@ def delete_customer(id):
 
     return redirect(url_for('retrieve_customers'))
 
+@app.route('/createSupport', methods=['GET', 'POST'])
+def create_support():
+    create_support_form = CreateSupportForm(request.form)
+    if request.method == 'POST' and create_support_form.validate():
+        support_dict = {}
+        db = shelve.open('Support.db', 'c')
+
+        try:
+            support_dict = db['Support']
+        except:
+            print("Error in retrieving Support from support.db.")
+
+        supp = Support.Support(create_support_form.name.data, create_support_form.email.data,
+                                     create_support_form.outlet.data, create_support_form.platform.data,
+                                     create_support_form.order_id.data, create_support_form.subject.data,
+                                    create_support_form.enquiry.data,)
+
+        support_dict[supp.get_supp.data()] = supp
+        db['Support'] = support_dict
+
+        db.close()
+        return redirect(url_for("home"))
+    return render_template('createSupport.html', form=create_support_form)
+
 
 if __name__ == '__main__':
     app.run()
